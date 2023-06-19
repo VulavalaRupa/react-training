@@ -31,18 +31,16 @@ function ContactList(){
       )
     
     return(
-        <div className="card mt-5 p-5">
-         <div className="row d-flex ">
-            <div className="">
-         <h3>Contact List</h3>
-            </div>
-            <div className="d-flex align-content-end">
+        <div className=" p-5">
+         <div className="card p-5 "> 
+         <span>
+        <b>Contact List</b> 
         <Link to="/home/addcontact">
-          <p>Add Contact</p>
+         <button  className="btn btn-primary" style={{"float":"right"}}> Add Contact</button>
         </Link>
-        </div>
-            </div>
+          </span>
         <div>{renderContactCards}</div>
+            </div>
         </div>
        
         

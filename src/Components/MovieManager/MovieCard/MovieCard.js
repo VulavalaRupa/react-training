@@ -15,12 +15,14 @@ const MovieCard = () => {
   const { data: searchResults, error: searchError } = useSearchMoviesQuery(searchQuery);
   const { data: movieDetails, error: detailsError } = useGetMovieByIdQuery(selectedMovieId);
   const [cart, setCart] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     // Retrieve cart items from localStorage during initialization
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       setCart(JSON.parse(storedCartItems));
+      setCount(JSON.parse(storedCartItems).length);
     }
   }, []);
 
@@ -40,11 +42,29 @@ const MovieCard = () => {
     const newCart = [...cart, { id: movieId, title: movieTitle }];
     setCart(newCart);
     localStorage.setItem('cartItems', JSON.stringify(newCart)); 
-    navigate('/home/cartlist')
+    setCount(newCart.length);
+    alert("Added to cart successfully")
   };
+  const navigateToCart = () => {
+    navigate('/home/cartlist')
+  }
 
   return (
     <div>
+      <div className="top-row">
+          <form onSubmit={(e) => e.preventDefault()}>
+            <input className="search"
+              type="text"
+              value={searchQuery}
+              onChange={handleSearch}
+              placeholder="Search movies..."
+            />
+          </form>
+          <div className="icon-class">
+       <i className="fa fa-shopping-cart" style={{"font-size":"2rem", cursor:"pointer"}} onClick={navigateToCart}> </i>
+       <span class="badge badge-light">{count}</span>
+       </div>
+       </div>
       {selectedMovieId ? (
         <>
          <MovieDetail movie={movieDetails}/>
@@ -52,18 +72,20 @@ const MovieCard = () => {
        
       ) : (
         <>
-          {/* <form onSubmit={handleSearch}>
-            <input type="text" name="search" />
-            <button type="submit">Search</button>
-          </form> */}
+          {/* <div className="top-row">
           <form onSubmit={(e) => e.preventDefault()}>
-            <input
+            <input className="search"
               type="text"
               value={searchQuery}
               onChange={handleSearch}
               placeholder="Search movies..."
             />
           </form>
+          <div className="icon-class">
+       <i className="fa fa-shopping-cart" style={{"font-size":"2rem"}} onClick={navigateToCart}> </i>
+       <span class="badge badge-light">{count}</span>
+       </div>
+       </div> */}
           <MovieList movies={searchResults?.Search.filter((movie) =>
             movie.Title.toLowerCase().includes(searchQuery.toLowerCase())
           )}

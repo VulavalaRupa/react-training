@@ -21,7 +21,7 @@ const MovieList = ({ movies, onMovieClick, onAddToCart}) => {
           <img src={movie.Poster} alt={movie.Title} />
           <h3>Title:{movie.Title}</h3>
           <b>Year:{movie.Year}</b>
-          <button  className="btn btn-primary add-btn" onClick={() => onAddToCart(movie.imdbID, movie.Title)}><i className="fa fa-shopping-cart"></i>   Add to Cart</button>
+          <button  className="btn btn-primary add-btn" onClick={() => onAddToCart(movie.imdbID, movie.Title)}> Add to Cart</button>
           {/* <button type="button">Add To Cart <i className="fa fa-shopping-cart"></i></button> */}
         </div>
       ))}

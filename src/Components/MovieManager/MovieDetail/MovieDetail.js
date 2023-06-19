@@ -12,7 +12,8 @@ const MovieDetail = ({ movie }) => {
   console.log("Movie", movie)
 
   return (
-    <div className="movie-section p-5">
+    <div className="p-5">
+    <div className="movie-section ">
       {Object.keys(movie).length === 0 ? (
         <div>...Loading</div>
       ) : (
@@ -63,6 +64,7 @@ const MovieDetail = ({ movie }) => {
       </div>
     </>
        )}
+       </div>
        </div>
   );
 };

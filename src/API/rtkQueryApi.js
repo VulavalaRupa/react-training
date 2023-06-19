@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_KEY = '7169d07b';
+const API_KEY = '7169d07b'; 
 
 export const movieApi = createApi({
   reducerPath: 'omdb',
