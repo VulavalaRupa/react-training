@@ -1,0 +1,29 @@
+@import "../../../assets/variable.scss";
+
+.movie-list,
+.show-list {
+  h2 {
+    color: $secondary-color;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+}
+
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.add-btn{
+  margin-left: 6rem;
+}
+
+div{
+  i{
+font-size: 30px;
+  }
+  b{
+    font-size: 20px;
+  }
+}

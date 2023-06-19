@@ -1,0 +1,16 @@
+@import "../../../assets/variable.scss";
+
+.header {
+  background: transparent linear-gradient(97deg, #8a2e72 0%, #af4567 100%) 0% 0% no-repeat padding-box;
+  height: 72px;
+  padding: 0px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: $font-primary;
+  font-size: 25px;
+  font-weight: 600;
+}
