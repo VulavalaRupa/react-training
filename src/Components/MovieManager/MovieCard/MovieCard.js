@@ -54,6 +54,7 @@ const MovieCard = () => {
         const updatedItems = [...storedMovies, movie];
         localStorage.setItem('cartItems', JSON.stringify(updatedItems));
         setCount(updatedItems.length);
+        alert("Successfully added to cart")
       }
     }
     if(isMovieInCart === true){
