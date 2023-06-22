@@ -7,7 +7,7 @@ export const movieApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://www.omdbapi.com/' }),
   endpoints: (builder) => ({
     searchMovies: builder.query({
-      query: () => `?apikey=${API_KEY}&s=star wars`,
+      query: (term) => `?apikey=${API_KEY}&s=${term}`,
     }),
     getMovieById: builder.query({
         query: (id) => `?apikey=${API_KEY}&i=${id}`,

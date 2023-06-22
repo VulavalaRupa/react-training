@@ -8,9 +8,9 @@ import { useSelector } from "react-redux";
 
 const MovieCard = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('star wars');
   const [selectedMovieId, setSelectedMovieId] = useState(null);
-  const { data: searchResults, error: searchError } = useSearchMoviesQuery();
+  const { data: searchResults, error: searchError } = useSearchMoviesQuery(searchQuery);
   const { data: movieDetails, error: detailsError } = useGetMovieByIdQuery(selectedMovieId);
   const cartCount = useSelector((state) => state.cart.count);
 
@@ -57,7 +57,7 @@ const MovieCard = () => {
           <span class="badge badge-light">{cartCount}</span>
         </div>
       </div>
-          <MovieList movies={searchResults?.Search.filter((movie) =>
+          <MovieList movies={searchResults?.Search?.filter((movie) =>
             movie.Title.toLowerCase().includes(searchQuery.toLowerCase())
           )}
             onMovieClick={handleMovieClick} />
