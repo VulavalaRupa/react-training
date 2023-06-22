@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../../Redux/movies/cartslice";
 
 const CartList = () => {
+  const cartItems = useSelector((state) => state.cart.items);
 
-  const storedCartItems = localStorage.getItem('cartItems');
-  const [cartItems, setCartItems] = useState(storedCartItems ? JSON.parse(storedCartItems) : []);
+  const dispatch = useDispatch();
 
-  const deleteCartItems = (movieId) => {
-    const updatedCartItems = cartItems.filter((item) => item.imdbID !== movieId);
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+  const handleRemoveFromCart = (movieId) => {
+    dispatch(removeFromCart(movieId));
   };
+
 
 
   return (
@@ -21,7 +21,7 @@ const CartList = () => {
             {cartItems.map((item) => (
               <div className="card p-4 m-3">
                 <span key={item.imdbID}><b>{item.Title}</b>
-                  <i className="fa fa-trash" style={{ "color": "red", "font-size": "1.5rem", "float": "right" }} onClick={() => deleteCartItems(item.imdbID)}></i>
+                  <i className="fa fa-trash" style={{ "color": "red", "font-size": "1.5rem", "float": "right" }} onClick={() => handleRemoveFromCart(item.imdbID)}></i>
                 </span>
               </div>
             ))}
